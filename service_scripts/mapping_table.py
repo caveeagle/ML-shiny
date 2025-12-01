@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-BASE_DATASET_PATH = "./data/cleaned_dataset_v4.csv"
+BASE_DATASET_PATH = "../service_data/cleaned_dataset_v4.csv"
 df = pd.read_csv(BASE_DATASET_PATH, delimiter=",")
 
 #######################################
@@ -68,10 +68,18 @@ median_income = (
     .reset_index(name='median_cadastral_income')
 )
 
+# Global median cadastral_income across the entire dataset
+global_median = df['cadastral_income'].median()
+
+# Replace NaN in the median_income table with the global median
+median_income['median_cadastral_income'] = median_income['median_cadastral_income'].fillna(global_median)
+
 # Merge median income into the final mapping table
 mapping_full = mapping_full.merge(median_income, on='postal_code', how='left')
 
-mapping_full.to_csv("./data/postal_code_mapping.csv", index=False, encoding="utf-8")
+mapping_full = mapping_full.sort_values(by='postal_code')
+
+mapping_full.to_csv("../data/postal_code_mapping.csv", index=False, encoding="utf-8")
 
 #######################################
 

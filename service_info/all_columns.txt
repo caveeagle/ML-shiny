@@ -1,0 +1,60 @@
+price                                     float64
+rooms                                     float64 (1-15)
+area                                      float64 (15 - 560)
+
+postal_code                               int64
+cadastral_income                          float64
+
+
+bathrooms                                 float64 (1-5)
+toilets                                   float64 (1-5)
+facades_number                            float64 (1-4)
+number_floors                             float64 (1-10)
+build_year                                float64 (1800-2024)
+
+has_swimming_pool                         int64
+
+has_terrace                               int64
+has_garden                                int64
+has_garage                                int64
+elevator                                  int64
+is_furnished                              int64
+
+leased                                    float64  = 0 (95% but not valuable)
+running_water                             float64  = 1
+primary_energy_consumption                float64 ( 0 - 1200 )
+
+
+locality_antwerp                          bool
+locality_braine-l-alleud                  bool
+locality_brussels                         bool
+locality_gent                             bool
+locality_laken                            bool
+locality_liege                            bool
+locality_lier                             bool
+locality_mons                             bool
+locality_mouscron                         bool
+locality_namur                            bool
+locality_nivelles                         bool
+locality_oostende                         bool
+locality_other                            bool
+locality_pont-a-celles                    bool
+locality_roeselare                        bool
+locality_seraing                          bool
+locality_tournai                          bool
+locality_tubize                           bool
+locality_turnhout                         bool
+locality_wavre                            bool
+
+property_type_house                       bool
+property_type_other                       bool
+
+property_subtype_duplex                   bool
+property_subtype_other                    bool
+property_subtype_residence                bool
+property_subtype_studio                   bool
+property_subtype_villa                    bool
+
+has_equipped_kitchen_Not equipped         bool 
+has_equipped_kitchen_Partially equipped   bool
+has_equipped_kitchen_Super equipped       bool
