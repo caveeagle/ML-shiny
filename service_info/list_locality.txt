@@ -1,0 +1,22 @@
+[
+    "antwerp",
+    "braine-l-alleud",
+    "brussels",
+    "gent",
+    "laken",
+    "liege",
+    "lier",
+    "mons",
+    "mouscron",
+    "namur",
+    "nivelles",
+    "oostende",
+    "other",
+    "pont-a-celles",
+    "roeselare",
+    "seraing",
+    "tournai",
+    "tubize",
+    "turnhout",
+    "wavre"
+]
