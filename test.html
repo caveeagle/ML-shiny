@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Belgium map - nouveau_PO</title>
+
+    <!-- Leaflet CSS -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""
+    />
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+
+<!-- Leaflet JS -->
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+></script>
+
+<!-- shp.js for reading shapefiles in the browser -->
+<script src="https://unpkg.com/shpjs@latest/dist/shp.js"></script>
+
+<script>
+    // Create the map
+    const map = L.map('map').setView([50.85, 4.35], 8); // roughly centered on Brussels
+
+    // OpenStreetMap base layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Load the shapefile (zip archive) belgium_map_simplified.zip from the same directory
+    shp("belgium_map_simplified.shp")
+        .then(function (geojson) {
+            // Add GeoJSON to the map
+            const geoLayer = L.geoJSON(geojson, {
+                onEachFeature: function (feature, layer) {
+                    // Optional style
+                    layer.setStyle({
+                        weight: 1,
+                        color: '#333',
+                        fillOpacity: 0.4
+                    });
+
+                    // Click handler
+                    layer.on('click', function (e) {
+                        const props = feature.properties || {};
+                        const value = props.nouveau_PO;
+
+                        const content = (value !== undefined && value !== null && value !== "")
+                            ? "nouveau_PO: " + value
+                            : "Field nouveau_PO: no data";
+
+                        layer.bindPopup(content).openPopup(e.latlng);
+
+                        // If needed — console output:
+                        // console.log('Clicked feature nouveau_PO:', value);
+                    });
+                }
+            }).addTo(map);
+
+            // Fit the map to the layer bounds
+            map.fitBounds(geoLayer.getBounds());
+        })
+        .catch(function (err) {
+            console.error("Error loading shapefile:", err);
+            alert("Failed to load belgium_map_simplified.zip. Check the file and path.");
+        });
+</script>
+</body>
+</html>
