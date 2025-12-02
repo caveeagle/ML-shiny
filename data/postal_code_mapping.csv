@@ -1,4 +1,5 @@
 postal_code,locality,median_cadastral_income,median_area,median_rooms,median_number_floors,median_bathrooms,median_toilets,median_facades_number,median_primary_energy_consumption
+1,None,800.0,119.0,3.0,3.0,1.0,1.0,3.0,232.0
 1000,brussels,1281.0,105.0,2.0,6.0,1.0,2.0,2.0,167.0
 1020,laken,1750.0,100.0,2.0,3.0,1.0,2.0,2.0,242.0
 1030,None,845.0,111.0,2.0,4.0,1.0,1.5,2.0,202.0

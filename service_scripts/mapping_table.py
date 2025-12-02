@@ -83,10 +83,22 @@ for col in cols_to_process:
 
 ###########################################################################
 
+###########################################################################
+# Add synthetic region N1 with global medians
+###########################################################################
 
+# Build a dict for the new row
+synthetic_row = {"postal_code": 1, "locality": "None"}
 
+for col in cols_to_process:
+    global_median = df[col].median()
+    synthetic_row[f"median_{col}"] = global_median
 
-
+# Append the new row
+mapping_full = pd.concat(
+    [mapping_full, pd.DataFrame([synthetic_row])],
+    ignore_index=True
+)
 
 ###########################################################################
 ###########################################################################

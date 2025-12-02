@@ -34,6 +34,10 @@ def calculate_price(data: dict) -> int:
     else:    
         model_params['postal_code'] = data.get('postal_code')
         postal_code = data.get('postal_code')
+    
+    if not (df["postal_code"] == postal_code).any():
+        ### No any records with this postal code:
+        postal_code = 1  # synthetic region N1 with global medians
         
     ####################################################
     ####################################################
@@ -158,10 +162,10 @@ def calculate_price(data: dict) -> int:
     if(0):
         print(best_model.feature_names_in_)
         
-    if(1):    
-        print('\n\nModel_Params:\n')
+    if(0):    
+        print('\nModel_Params:')
         print(model_params)
-        print('\n\n')
+        print('\n')
     
     
     # Get feature names from the model (exact order used during training)
