@@ -1,0 +1,28 @@
+
+postal_code +
+
+rooms +
+area +
+
+number_floors +
+bathrooms +
+toilets  +
+facades_number +
+cadastral_income +
+primary_energy_consumption +
+
+is_furnished +
+has_swimming_pool+
+has_terrace  +
+has_garden +
+has_garage+
+elevator +
+
+build_year+
+
+
+
+equipped_kitchen
+property_type
+property_subtype
+

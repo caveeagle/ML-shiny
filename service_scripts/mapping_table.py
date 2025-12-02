@@ -58,24 +58,39 @@ mapping_full = all_postal.merge(mapping, on='postal_code', how='left')
 # Replace NaN with "None"
 mapping_full['locality'] = mapping_full['locality'].fillna("None")
 
-# -------------------------------------------------------------------
-# Compute median cadastral_income for each postal_code
-# -------------------------------------------------------------------
+###########################################################################
 
-median_income = (
-    df.groupby('postal_code')['cadastral_income']
-    .median()
-    .reset_index(name='median_cadastral_income')
-)
+# Columns for which we want to compute the median per postal_code
+cols_to_process = ['cadastral_income', 'area', 'rooms','number_floors',
+                   'bathrooms', 'toilets','facades_number','primary_energy_consumption']   
 
-# Global median cadastral_income across the entire dataset
-global_median = df['cadastral_income'].median()
+for col in cols_to_process:
+    # Median per postal_code
+    median_table = (
+        df.groupby('postal_code')[col]
+          .median()
+          .reset_index(name=f'median_{col}')
+    )
 
-# Replace NaN in the median_income table with the global median
-median_income['median_cadastral_income'] = median_income['median_cadastral_income'].fillna(global_median)
+    # Global median for this column
+    global_median = df[col].median()
 
-# Merge median income into the final mapping table
-mapping_full = mapping_full.merge(median_income, on='postal_code', how='left')
+    # Replace NaN with global median
+    median_table[f'median_{col}'] = median_table[f'median_{col}'].fillna(global_median)
+
+    # Merge into the final mapping table
+    mapping_full = mapping_full.merge(median_table, on='postal_code', how='left')
+
+###########################################################################
+
+
+
+
+
+
+###########################################################################
+###########################################################################
+
 
 mapping_full = mapping_full.sort_values(by='postal_code')
 

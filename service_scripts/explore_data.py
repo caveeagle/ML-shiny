@@ -8,17 +8,22 @@ df = pd.read_csv(BASE_DATASET_PATH, delimiter=",")
 
 #######################################
 
-#count_gent = (df['locality'] == 'gent').sum()
-#print(count_gent)  # 328 | 262
+if(0):
+    count_gent = (df['locality'] == 'gent').sum()
+    print(count_gent)  # 328 | 262
 
-#print( df.info() )
+if(0):
+    print( df.info() )
 
-col = 'running_water'
+if(0):
+    col = 'running_water'
+    fraction = df[col].value_counts(normalize=True).iloc[0]
+    print(fraction)
 
-fraction = df[col].value_counts(normalize=True).iloc[0]
-
-print(fraction)
- 
+if(1):
+    col = 'postal_code'
+    top_value = df[col].value_counts(dropna=False).idxmax()
+    print(top_value) 
 
 #######################################
 

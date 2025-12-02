@@ -5,24 +5,20 @@ area                                      float64 (15 - 560)
 postal_code                               int64
 cadastral_income                          float64
 
-
 bathrooms                                 float64 (1-5)
 toilets                                   float64 (1-5)
 facades_number                            float64 (1-4)
 number_floors                             float64 (1-10)
-build_year                                float64 (1800-2024)
+primary_energy_consumption                float64 ( 0 - 1200 )
 
 has_swimming_pool                         int64
-
 has_terrace                               int64
 has_garden                                int64
 has_garage                                int64
 elevator                                  int64
-is_furnished                              int64
 
 leased                                    float64  = 0 (95% but not valuable)
 running_water                             float64  = 1
-primary_energy_consumption                float64 ( 0 - 1200 )
 
 
 locality_antwerp                          bool
@@ -46,8 +42,13 @@ locality_tubize                           bool
 locality_turnhout                         bool
 locality_wavre                            bool
 
+build_year                                float64 (1800-2024)
+is_furnished                              int64
+
 property_type_house                       bool
 property_type_other                       bool
+
+----------------------------------------------
 
 property_subtype_duplex                   bool
 property_subtype_other                    bool

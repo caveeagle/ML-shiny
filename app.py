@@ -175,12 +175,12 @@ ui.tags.div(
                 selected="Fully equipped"
             ),
 
+            ui.input_switch("is_furnished", "Is furnished?", value=False),
             ui.input_switch("has_swimming_pool", "Swimming pool", value=False),
             ui.input_switch("has_terrace", "Terrace", value=False),
             ui.input_switch("has_garden", "Garden", value=False),
             ui.input_switch("has_garage", "Garage", value=False),
             ui.input_switch("elevator", "Elevator", value=False),
-            ui.input_switch("is_furnished", "Furnished", value=False),
         ),
 
         # Column 3 — optional extras
