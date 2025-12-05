@@ -1,0 +1,12 @@
+# Exclude ALL directories starting with "service_"
+service_*/
+
+# Exclude entire shapefiles directory
+shapefiles/
+
+# Exclude Python cache directories
+__pycache__/
+
+# (Optional, but safe) exclude compiled Python files
+*.pyc
+*.pyo

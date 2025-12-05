@@ -9,7 +9,7 @@ from model_price import calculate_price
 
 ####################################################################################
 
-with open('./data/belgium_map.geojson') as f:
+with open('./data/belgium_map.geojson', encoding='utf-8') as f:
     geojson_data_raw = json.load(f)
     geojson_data = json.dumps(geojson_data_raw)
 
