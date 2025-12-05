@@ -2,34 +2,18 @@
 # - Map displays belgium_map_simplified.shp
 # - Clicking a region writes its `nouveau_PO` into the postal_code field (numeric input)
 
+import json
+
 from shiny import App, ui, render, reactive
-
-
-
 from model_price import calculate_price
-
-
 
 ####################################################################################
 
-if(1):
-    
-    import json
-    
-    with open('./data/belgium_map.geojson') as f:
-        geojson_data_raw = json.load(f)
-        geojson_data = json.dumps(geojson_data_raw)
-
-if(0):
-    
-    import geopandas as gpd
-    
-    gdf = gpd.read_file("./shapefiles/belgium_map_simplified.shp")
-    geojson_data = gdf.to_json()
-
+with open('./data/belgium_map.geojson') as f:
+    geojson_data_raw = json.load(f)
+    geojson_data = json.dumps(geojson_data_raw)
 
 app_ui = ui.page_fluid(
-
 
     # --- TOP ROW: BUTTON + PRICE (ONE LINE) ---
     ui.tags.div(
